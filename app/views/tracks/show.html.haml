@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @track.name
+%p
+  %b Description:
+  = @track.description
+%p
+  %b Level:
+  = @track.level
+= link_to 'Edit', edit_track_path(@track)
+|
+\#{link_to 'Back', tracks_path}

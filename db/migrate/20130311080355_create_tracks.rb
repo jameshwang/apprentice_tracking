@@ -4,6 +4,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :level
+      t.integer :user_id
 
       t.timestamps
     end

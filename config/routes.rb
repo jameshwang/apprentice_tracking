@@ -1,8 +1,8 @@
 ApprenticeTracking::Application.routes.draw do
   resources :tracks
-
-
   resources :users
+
+  root to: 'users#index'
 
 
   # The priority is based upon order of creation:

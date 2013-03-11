@@ -1,0 +1,11 @@
+%p#notice= notice
+%h1 Welcome #{@user.name}
+
+%h3 Below are your current list of tracks
+%ul
+	- @tracks.each do |track|
+		%li= "#{track.name} - #{track.level}"
+
+
+/ TODO - Make this part of the header
+= link_to 'Edit Name/Email', edit_user_path(@user)
