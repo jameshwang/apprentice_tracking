@@ -1,6 +1,8 @@
 ApprenticeTracking::Application.routes.draw do
   resources :tracks
-  resources :users
+  resources :users do
+    resources :tracks
+  end
 
   root to: 'users#index'
 

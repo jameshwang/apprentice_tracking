@@ -2,7 +2,11 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    if params[:user_id]
+      @tracks = User.find(params[:user_id]).tracks
+    else
+      @tracks = Track.find(params[:track_id])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +17,11 @@ class TracksController < ApplicationController
   # GET /tracks/1
   # GET /tracks/1.json
   def show
-    @track = Track.find(params[:id])
+    if params[:user_id]
+      @track = User.find(params[:user_id]).tracks
+    else
+      @track = Track.find(params[:track_id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
