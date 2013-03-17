@@ -44,5 +44,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'bootstrap-sass', '~> 2.3.0.1'
-
 gem 'haml-rails'
+gem 'annotate', ">=2.5.0"

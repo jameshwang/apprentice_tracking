@@ -1,11 +1,25 @@
 %p#notice= notice
-%h1 = #{@user.name} #{@track.name}
+%h1 #{@user.name} #{@track.name}
 %p
   %b Description:
   = @track.description
 %p
   %b Level:
   = @track.level
+
+%h1#timer
+%br
+#start-stop.btn Start/Stop
+
 = link_to 'Edit', edit_track_path(@track)
 |
 \#{link_to 'Back', tracks_path}
+
+:javascript
+  $(function () {
+    var stopWatch = new StopWatch(#{@track.timer});
+    $('#start-stop').on('click', function () {
+      StopWatch.Timer.toggle();
+      stopWatch.update();
+    });
+  });

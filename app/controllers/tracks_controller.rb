@@ -5,7 +5,7 @@ class TracksController < ApplicationController
     if params[:user_id]
       @tracks = User.find(params[:user_id]).tracks
     else
-      @tracks = Track.find(params[:track_id])
+      @tracks = Track.all
     end
 
     respond_to do |format|
@@ -17,11 +17,8 @@ class TracksController < ApplicationController
   # GET /tracks/1
   # GET /tracks/1.json
   def show
-    if params[:user_id]
-      @track = User.find(params[:user_id]).tracks
-    else
-      @track = Track.find(params[:track_id])
-    end
+    @track = Track.find(params[:id])
+    @user = @track.user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -68,6 +65,8 @@ class TracksController < ApplicationController
 
     respond_to do |format|
       if @track.update_attributes(params[:track])
+        puts "It updated the Attribute!!!!"
+        puts params[:track]
         format.html { redirect_to @track, notice: 'Track was successfully updated.' }
         format.json { head :no_content }
       else
