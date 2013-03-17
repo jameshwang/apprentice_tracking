@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20130316202909) do
     t.string   "description"
     t.string   "level"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "timer"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "timer",       :default => 0
   end
 
   create_table "users", :force => true do |t|

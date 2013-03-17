@@ -9,7 +9,7 @@
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  timer       :integer
+#  timer       :integer          default(0)
 #
 
 require 'test_helper'
