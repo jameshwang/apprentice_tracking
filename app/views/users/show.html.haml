@@ -16,9 +16,11 @@
       %td= track.name
       %td= track.description
       %td= track.level
-      %td= link_to 'Show', track
-      %td= link_to 'Edit', edit_track_path(track)
-      %td= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Show', user_track_path(@user, track)
+      %td= link_to 'Edit', edit_user_track_path(@user, track)
+      %td= link_to 'Destroy', user_track_path(@user, track), method: :delete, data: { confirm: 'Are you sure?' }
 
 / TODO - Make this part of the header
 = link_to 'Edit Name/Email', edit_user_path(@user)
+|
+= link_to 'Create New Track', new_user_track_path(@user)

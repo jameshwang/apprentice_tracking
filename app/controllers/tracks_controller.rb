@@ -29,7 +29,8 @@ class TracksController < ApplicationController
   # GET /tracks/new
   # GET /tracks/new.json
   def new
-    @track = Track.new
+    @track = Track.new(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,16 +41,19 @@ class TracksController < ApplicationController
   # GET /tracks/1/edit
   def edit
     @track = Track.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # POST /tracks
   # POST /tracks.json
   def create
-    @track = Track.new(params[:track])
+    parameters = params[:track].merge({ :user_id => params[:user_id] })
+    @track = Track.new(parameters)
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
+        format.html { redirect_to @user, notice: 'Track was successfully created.' }
         format.json { render json: @track, status: :created, location: @track }
       else
         format.html { render action: "new" }
@@ -62,10 +66,10 @@ class TracksController < ApplicationController
   # PUT /tracks/1.json
   def update
     @track = Track.find(params[:id])
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       if @track.update_attributes(params[:track])
-        puts "It updated the Attribute!!!!"
         puts params[:track]
         format.html { redirect_to @track, notice: 'Track was successfully updated.' }
         format.json { head :no_content }
@@ -83,7 +87,7 @@ class TracksController < ApplicationController
     @track.destroy
 
     respond_to do |format|
-      format.html { redirect_to tracks_url }
+      format.html { redirect_to user_url(params[:user_id]) }
       format.json { head :no_content }
     end
   end

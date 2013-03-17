@@ -1,5 +1,4 @@
 ApprenticeTracking::Application.routes.draw do
-  resources :tracks
   resources :users do
     resources :tracks
   end

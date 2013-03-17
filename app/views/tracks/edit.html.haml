@@ -1,5 +1,5 @@
 %h1 Editing track
 = render 'form'
-= link_to 'Show', @user
+= link_to 'Show', user_track_path(@user, @track)
 |
-\#{link_to 'Back', users_path}
+\#{link_to 'Back', user_path(@user)}

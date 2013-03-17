@@ -13,7 +13,7 @@
 #
 
 class Track < ActiveRecord::Base
-  attr_accessible :description, :level, :name, :timer
+  attr_accessible :description, :user_id, :level, :name, :timer
 
   belongs_to :user
 
